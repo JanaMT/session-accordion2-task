@@ -1,7 +1,10 @@
 .playground-container {
+  width: 100%;
+  min-width: 0;
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 2.4rem 4rem;
+  overflow-x: clip;
 }
 
 .playground-header {
@@ -96,6 +99,7 @@
 
 .status-bar strong {
   color: var(--starbucks-green);
+  overflow-wrap: anywhere;
 }
 
 .active-status {
@@ -113,6 +117,8 @@
 
 .playground-layout {
   display: grid;
+  width: 100%;
+  min-width: 0;
   grid-template-columns: minmax(0, 1fr) 315px;
   gap: 2.4rem;
   align-items: start;
@@ -127,6 +133,7 @@
 }
 
 .preview-section {
+  min-width: 0;
   min-height: 400px;
   padding: 2.4rem;
 }
@@ -159,6 +166,7 @@
 }
 
 .controls-panel {
+  min-width: 0;
   position: sticky;
   top: 1rem;
   padding: 1.6rem;
@@ -244,6 +252,7 @@
 }
 
 .qa-form {
+  min-width: 0;
   margin-top: 2.4rem;
   padding: 2.4rem;
 }
@@ -349,6 +358,7 @@
 }
 
 .live-code-section {
+  min-width: 0;
   margin-top: 2.4rem;
   padding: 2.4rem;
   color: #fff;
@@ -397,13 +407,25 @@
   white-space: pre;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 767px) {
   .playground-layout {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  .playground-layout > *,
+  .playground-layout > div,
+  .playground-layout .preview-section,
+  .playground-layout .controls-panel {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .controls-panel {
     position: static;
+    order: -1;
   }
 }
 
@@ -420,6 +442,43 @@
   .preview-section,
   .qa-form,
   .live-code-section {
+    width: 100%;
     padding: 1.6rem;
+  }
+
+  .playground-header h1 {
+    font-size: clamp(2rem, 10vw, 2.7rem);
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+  }
+
+  .status-bar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .section-header,
+  .code-header {
+    gap: 0.75rem;
+  }
+
+  .section-header h2,
+  .code-header h2 {
+    font-size: 1.15rem;
+  }
+
+  .custom-list li {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .custom-list span {
+    flex-basis: calc(100% - 2.5rem);
+  }
+
+  .custom-list code {
+    margin-inline-start: auto;
   }
 }
