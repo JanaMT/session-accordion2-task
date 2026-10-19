@@ -377,6 +377,9 @@
 
 .code-container {
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   min-height: 280px;
   padding: 1.6rem;
   overflow: auto;
@@ -397,6 +400,7 @@
 }
 
 .code-block {
+  max-width: 100%;
   margin: 1.5rem 0 0;
   color: #d4e9e2;
   font-family: Consolas, "Fira Code", monospace;
@@ -404,7 +408,9 @@
   line-height: 1.8;
   direction: ltr;
   text-align: left;
-  white-space: pre;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 @media (max-width: 767px) {
@@ -444,6 +450,20 @@
   .live-code-section {
     width: 100%;
     padding: 1.6rem;
+  }
+
+  .live-code-section .code-header {
+    align-items: flex-start;
+  }
+
+  .code-container {
+    min-height: 240px;
+    padding: 1.4rem 1rem;
+  }
+
+  .code-block {
+    font-size: 0.72rem;
+    line-height: 1.7;
   }
 
   .playground-header h1 {
